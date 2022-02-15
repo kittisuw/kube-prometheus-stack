@@ -10,7 +10,7 @@
     ```shell
     git clone https://github.com/kittisuw/kube-prometheus-stack.git
     ```
-1. เพิ่ม helm repository และ list chart ที่มีให้ใช้   
+2. เพิ่ม helm repository และ list chart ที่มีให้ใช้   
     ```shell
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo update
@@ -22,4 +22,11 @@
     prometheus-community/alertmanager                       0.15.0          v0.23.0         The Alertmanager handles alerts sent by client ...
     prometheus-community/kube-prometheus-stack              32.2.1          0.54.0          kube-prometheus-stack collects Kubernetes manif...
     ...
+    ```
+3. install
+    ```
+    helm install kube-prom-stack prometheus-community/kube-prometheus-stack --version "${HELM_CHART_VERSION}" \
+    --namespace monitoring \
+    --create-namespace \
+    -f "assets/manifests/prom-stack-values-v${HELM_CHART_VERSION}.yaml"
     ```
