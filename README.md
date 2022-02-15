@@ -88,4 +88,13 @@ Then, you can connect to `Grafana` (using default credentials: `admin/prom-opera
 kubectl --namespace monitoring port-forward svc/kube-prom-stack-grafana 3000:80
 ```
 Step 5 - Configuring Persistent Storage for Prometheus
+```shell
+grafana:
+  ...
+  persistence:
+    enabled: true
+    storageClassName: do-block-storage
+    accessModes: ["ReadWriteOnce"]
+    size: 5Gi
+```
 Step 6 - Configuring Persistent Storage for Grafana
