@@ -10,7 +10,7 @@
 ```shell
 git clone https://github.com/kittisuw/kube-prometheus-stack.git
 ```
-2. เพิ่ม helm repository สำหรับ chart kube-prometheus-stack
+1. เพิ่ม helm repository และ list chart ที่มีให้ใช้
 ```shell
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
