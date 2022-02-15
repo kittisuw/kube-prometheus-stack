@@ -83,3 +83,7 @@ NAME                                                                    READY   
 statefulset.apps/alertmanager-kube-prom-stack-kube-prome-alertmanager   1/1     7m13s
 statefulset.apps/prometheus-kube-prom-stack-kube-prome-prometheus       1/1     7m13s
 ```
+Then, you can connect to `Grafana` (using default credentials: `admin/prom-operator` - see [prom-stack-values-v30.0.1](assets/manifests/prom-stack-values-v30.0.1.yaml#L58) file), by port forwarding to local machine:
+```shell
+kubectl --namespace monitoring port-forward svc/kube-prom-stack-grafana 3000:80
+```
