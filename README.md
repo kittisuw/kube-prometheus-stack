@@ -6,17 +6,16 @@
 4. [Curl](https://curl.se/download.html), for testing the examples (backend applications).
 
 ## Step 1 - Installing the Prometheus Stack
-1. Clone project   
-
-```shell
-git clone https://github.com/kittisuw/kube-prometheus-stack.git
-```
+1. Clone project
+    ```shell
+    git clone https://github.com/kittisuw/kube-prometheus-stack.git
+    ```
 1. เพิ่ม helm repository และ list chart ที่มีให้ใช้   
-```shell
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo update
-helm search repo prometheus-community
-```
+    ```shell
+    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    helm repo update
+    helm search repo prometheus-community
+    ```
 ผลลัพธ์ที่ได้จะประมาณนี้
 ```shell
 NAME                                                    CHART VERSION   APP VERSION     DESCRIPTION                                       
