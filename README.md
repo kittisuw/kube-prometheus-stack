@@ -24,11 +24,15 @@
     ...
     ```
 3. install
-    ```
+    ```shell
     HELM_CHART_VERSION="30.0.1"
-    
+
     helm install kube-prom-stack prometheus-community/kube-prometheus-stack --version "${HELM_CHART_VERSION}" \
     --namespace monitoring \
     --create-namespace \
     -f "assets/manifests/prom-stack-values-v${HELM_CHART_VERSION}.yaml"
     ```
+Now, check the Prometheus stack Helm release status:
+```shell
+helm ls -n monitoring
+```
