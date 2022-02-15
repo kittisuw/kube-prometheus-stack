@@ -6,3 +6,7 @@
 4. [Curl](https://curl.se/download.html), for testing the examples (backend applications).
 
 ## Step 1 - Installing the Prometheus Stack
+1. Clone project
+```shell
+git clone https://github.com/kittisuw/kube-prometheus-stack.git
+```
