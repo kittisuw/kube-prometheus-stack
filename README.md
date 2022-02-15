@@ -25,6 +25,8 @@
     ```
 3. install
     ```
+    HELM_CHART_VERSION="30.0.1"
+    
     helm install kube-prom-stack prometheus-community/kube-prometheus-stack --version "${HELM_CHART_VERSION}" \
     --namespace monitoring \
     --create-namespace \
