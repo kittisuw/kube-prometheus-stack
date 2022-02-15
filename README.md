@@ -97,4 +97,12 @@ grafana:
     accessModes: ["ReadWriteOnce"]
     size: 5Gi
 ```
+Next, apply settings using Helm:
+```shell
+HELM_CHART_VERSION="30.0.1"
+
+helm upgrade kube-prom-stack prometheus-community/kube-prometheus-stack --version "${HELM_CHART_VERSION}" \
+  --namespace monitoring \
+  -f "assets/manifests/prom-stack-values-v${HELM_CHART_VERSION}.yaml"
+```
 ## Step 3 - Configuring Persistent Storage for Grafana
