@@ -31,15 +31,15 @@ prometheusOperator:
 prometheus:
   enabled: true
 
-  ## Prometheus StorageSpec for persistent data
-  ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/storage.md
-  ##
-  # prometheusSpec:
-  #   storageSpec:
-  #     volumeClaimTemplate:
-  #       spec:
-  #         storageClassName: do-block-storage
-  #         accessModes: ["ReadWriteOnce"]
-  #         resources:
-  #           requests:
-  #             storage: 5Gi
+## Prometheus StorageSpec for persistent data
+## ref: https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/storage.md
+##
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: csi-disk
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi

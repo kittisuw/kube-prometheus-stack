@@ -155,15 +155,38 @@ kubectl apply -f assets/manifests/app-test.yaml
    
 ![Grafana](assets/images/grafana-03.png)
 
-## Step 4 - Configuring Persistent Storage for Prometheus
+## Step 4 - Configuring Persistent Storage for Prometheus   
+ถึง Step นี้ เราจะมา enable persisten storage สำหรับ Prometheus เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `cluster failures` ในที่นี้เเราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้
+1. List Storage Class(SC)
 ```shell
-grafana:
-  ...
-  persistence:
-    enabled: true
-    storageClassName: do-block-storage
-    accessModes: ["ReadWriteOnce"]
-    size: 5Gi
+kubectl get storageclass
+
+NAME                PROVISIONER                     RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+csi-disk            everest-csi-provisioner         Delete          Immediate              true                   15d
+csi-disk-topology   everest-csi-provisioner         Delete          WaitForFirstConsumer   true                   15d
+csi-nas             everest-csi-provisioner         Delete          Immediate              true                   15d
+csi-obs             everest-csi-provisioner         Delete          Immediate              false                  15d
+csi-sfsturbo        everest-csi-provisioner         Delete          Immediate              true                   15d
+efs-performance     flexvolume-huawei.com/fuxiefs   Delete          Immediate              true                   15d
+efs-standard        flexvolume-huawei.com/fuxiefs   Delete          Immediate              true                   15d
+nfs-rw              flexvolume-huawei.com/fuxinfs   Delete          Immediate              true                   15d
+obs-standard        flexvolume-huawei.com/fuxiobs   Delete          Immediate              false                  15d
+obs-standard-ia     flexvolume-huawei.com/fuxiobs   Delete          Immediate              false                  15d
+sas                 flexvolume-huawei.com/fuxivol   Delete          Immediate              true                   15d
+sata                flexvolume-huawei.com/fuxivol   Delete          Immediate              true                   15d
+ssd                 flexvolume-huawei.com/fuxivol   Delete          Immediate              true                   15d
+```
+
+```shell
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: csi-disk
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
 ```
 Next, apply settings using Helm:
 ```shell
@@ -173,4 +196,4 @@ helm upgrade kube-prom-stack prometheus-community/kube-prometheus-stack --versio
   --namespace monitoring \
   -f "assets/manifests/prom-stack-values-v${HELM_CHART_VERSION}.yaml"
 ```
-## Step 3 - Configuring Persistent Storage for Grafana
+## Step 5 - Configuring Persistent Storage for Grafana
