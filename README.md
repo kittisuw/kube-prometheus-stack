@@ -39,8 +39,7 @@
     **Note:**
     `ระบุ` version ของ `Helm` chart ที่จะใช้ในที่นี้เราจะเลือก 30.0.1
 
-
-Now, check the Prometheus stack Helm release status:
+ตรวจสอบ `Prometheus` stack โดยใช้ `Helm` release status:
 ```shell
 helm ls -n monitoring
 ```
