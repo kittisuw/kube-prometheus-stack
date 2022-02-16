@@ -180,7 +180,6 @@ ssd                 flexvolume-huawei.com/fuxivol   Delete          Immediate   
 ```
 2. unbar config assets/manifests/prom-stack-values-v30.0.1.yaml ดังด้านล่างในที่นี้เราจะใช้ Storage Class(SC) ที่ชื่อว่า csi-disk
 ```shell
-...
   prometheusSpec:
     storageSpec:
       volumeClaimTemplate:
