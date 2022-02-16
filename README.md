@@ -94,7 +94,54 @@ statefulset.apps/prometheus-kube-prom-stack-kube-prome-prometheus       1/1     
 ```shell
 kubectl --namespace monitoring port-forward svc/kube-prom-stack-grafana 3000:80
 ```
-## Step 2 - Configuring Persistent Storage for Prometheus
+Important Note:
+**ไม่ควร** expose Gragana ออก `public` network (ควรจะใช้ ingress mapping หรือ Loadbalance service), สามารถเลือก `Dashboard -> Manage` ในนั้นจะมี dashboard ต่างๆ ให้เลือก
+## Step 2 - Running application for test
+หลังจากที deploy   `Prometheus` และ `Grafana` ลง Kubernetes cluster เรียบร้อยแล้ว, Step นี้เราจะลองสร้าง deployment,service ชือ `example-app` เพื่อมาทดสอบว่าสามารถ monitor service ได้หรือไม่
+```bash
+vi assets/manifests/app-test.yaml
+...
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-app
+  namespace: monitoring
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example-app
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+      - name: example-app
+        image: fabxc/instrumented_app
+        ports:
+        - name: web
+          containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: example-app
+  namespace: monitoring
+  labels:
+    app: example-app
+spec:
+  selector:
+    app: example-app
+  ports:
+  - name: web
+    port: 8080
+```
+```
+kubectl apply -f assets/manifests/app-test.yaml
+```
+
+## Step 3 - Configuring Persistent Storage for Prometheus
 ```shell
 grafana:
   ...
