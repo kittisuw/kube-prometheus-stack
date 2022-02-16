@@ -52,7 +52,7 @@ kube-prom-stack monitoring      1               2022-02-16 01:09:18.394845 +0700
 ```shell
 kubectl get all -n monitoring
 ```
-ควรจะเห็น resorce ที่ deploy แล้ว: prometheus-node-exporter, kube-prome-operator, kube-prome-alertmanager, kube-prom-stack-grafana และ kube-state-metrics. ผลลัพธ์จะประมาณนี้:
+ควรจะเห็น resorce ที่ deploy แล้ว: `prometheus-node-exporter`, `kube-prome-operator`, `kube-prome-alertmanager`, `kube-prom-stack-grafana` และ `kube-state-metrics`. ผลลัพธ์จะประมาณนี้:
 ```shell
 NAME                                                         READY   STATUS    RESTARTS   AGE
 pod/alertmanager-kube-prom-stack-kube-prome-alertmanager-0   2/2     Running   0          7m13s
