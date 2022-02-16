@@ -141,11 +141,12 @@ spec:
 kubectl apply -f assets/manifests/app-test.yaml
 ```
 ## Step 3 - Visualizing Metrics Using Grafana
-1.ทำ port-forward เพื่อทดสอบ
+1. ทำ port-forward เพื่อทดสอบ
     ```shell
     kubectl --namespace monitoring port-forward svc/kube-prom-stack-grafana 3000:80
     ```
-2.เพิ่ม dashboard ที่ต้องการ
+
+2. เพิ่ม dashboard ที่ต้องการ
 ![Grafana Ambassador Dashboard](assets/images/grafana-01.png)
 
 ## Step 4 - Configuring Persistent Storage for Prometheus
