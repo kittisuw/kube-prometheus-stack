@@ -176,7 +176,7 @@ sas                 flexvolume-huawei.com/fuxivol   Delete          Immediate   
 sata                flexvolume-huawei.com/fuxivol   Delete          Immediate              true                   15d
 ssd                 flexvolume-huawei.com/fuxivol   Delete          Immediate              true                   15d
 ```
-unbar config assets/manifests/prom-stack-values-v30.0.1.yaml ดังด้านล่างในที่นี้เราจะใช้ Storage Class(SC) ที่ชื่อว่า csi-disk
+2. unbar config assets/manifests/prom-stack-values-v30.0.1.yaml ดังด้านล่างในที่นี้เราจะใช้ Storage Class(SC) ที่ชื่อว่า csi-disk
 ```shell
 ...
   prometheusSpec:
@@ -189,7 +189,7 @@ unbar config assets/manifests/prom-stack-values-v30.0.1.yaml ดังด้า�
             requests:
               storage: 5Gi
 ```
-Update config โดยใช้ Helm:
+3. Update config โดยใช้ Helm:
 ```shell
 HELM_CHART_VERSION="30.0.1"
 
@@ -197,4 +197,14 @@ helm upgrade kube-prom-stack prometheus-community/kube-prometheus-stack --versio
   --namespace monitoring \
   -f "assets/manifests/prom-stack-values-v${HELM_CHART_VERSION}.yaml"
 ```
+ตรวจสอบ Persisten Vulume Claim (PVC)
+```shell
+kubectl get pvc -n monitoring
+```
+ผลลัพธ์ที่ได้จะประมาณนี้ (STATUS column ควรจะเป็น Bound):
+```shell
+NAME                                                                                                     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+prometheus-kube-prom-stack-kube-prome-prometheus-db-prometheus-kube-prom-stack-kube-prome-prometheus-0   Bound    pvc-20e7c8ac-c19b-4f39-b4b0-4728b7d8c652   5Gi        RWO            csi-disk       13m
+```
+
 ## Step 5 - Configuring Persistent Storage for Grafana
