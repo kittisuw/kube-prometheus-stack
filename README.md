@@ -156,8 +156,8 @@ kubectl apply -f assets/manifests/app-test.yaml
 ![Grafana](assets/images/grafana-03.png)
 
 ## Step 4 - Configuring Persistent Storage for Prometheus   
-ถึง Step นี้ เราจะมา enable persisten storage สำหรับ Prometheus เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `cluster failures` ในที่นี้เเราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้
-1. List Storage Class(SC)
+ถึง Step นี้ เราจะมา enable persistent storage สำหรับ Prometheus เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `cluster failures` ในที่นี้เเราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้
+1. List Storage Class(SC) ที่ Storage admininstrator มีให้ใช้
 ```shell
 kubectl get storageclass
 
@@ -176,8 +176,9 @@ sas                 flexvolume-huawei.com/fuxivol   Delete          Immediate   
 sata                flexvolume-huawei.com/fuxivol   Delete          Immediate              true                   15d
 ssd                 flexvolume-huawei.com/fuxivol   Delete          Immediate              true                   15d
 ```
-
+ีืunbar config assets/manifests/prom-stack-values-v30.0.1.yaml ดังด้านล่างในที่นี้เราจะใช้ Storage Class(SC) ที่ชื่อว่า csi-disk
 ```shell
+...
   prometheusSpec:
     storageSpec:
       volumeClaimTemplate:
@@ -188,7 +189,7 @@ ssd                 flexvolume-huawei.com/fuxivol   Delete          Immediate   
             requests:
               storage: 5Gi
 ```
-Next, apply settings using Helm:
+Update config โดยใช้ Helm:
 ```shell
 HELM_CHART_VERSION="30.0.1"
 
