@@ -95,7 +95,7 @@ statefulset.apps/prometheus-kube-prom-stack-kube-prome-prometheus       1/1     
 kubectl --namespace monitoring port-forward svc/kube-prom-stack-grafana 3000:80
 ```
 Important Note:
-**ไม่ควร** expose Grafana ออก `public` network(ตัวอย่างเช่นใช้ ingress mapping หรือ Loadbalance service) ด้วย default login/password, สามารถเลือก `Dashboard -> Manage` ในนั้นจะมี dashboard ต่างๆ ให้เลือก
+**ไม่ควร** expose Grafana ออก `public` network(ตัวอย่างเช่นใช้ ingress mapping หรือ Loadbalance service) ด้วย default login/password, คุณสามารถเลือก `Dashboard -> Manage` ในนั้นจะมี dashboard ต่างๆ ให้เลือก
 ## Step 2 - Running application for test
 หลังจากที deploy   `Prometheus` และ `Grafana` ลง Kubernetes cluster เรียบร้อยแล้ว, Step นี้เราจะลองสร้าง deployment,service ชือ `example-app` เพื่อมาทดสอบว่าสามารถ monitor service ได้หรือไม่
 ```bash
