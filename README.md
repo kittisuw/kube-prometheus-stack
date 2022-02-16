@@ -43,7 +43,7 @@
 ```shell
 helm ls -n monitoring
 ```
-The output looks similar to (notice the STATUS column value - it should say deployed):
+ผลลัพท์จะประมาณนี้ (ข้อสังเกตุ colum STATUS ควรจะเป็น deployed):
 ```shell
 NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
 kube-prom-stack monitoring      1               2022-02-16 01:09:18.394845 +0700 +07    deployed        kube-prometheus-stack-30.0.1    0.53.1
