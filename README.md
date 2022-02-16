@@ -27,7 +27,7 @@
     prometheus-community/kube-prometheus-stack              32.2.1          0.54.0          kube-prometheus-stack collects Kubernetes manif...
     ...
     ```
-3. install
+3. install kube-prometheus-stack โดยใช้ Helm:
     ```shell
     HELM_CHART_VERSION="30.0.1"
 
@@ -36,6 +36,10 @@
     --create-namespace \
     -f "assets/manifests/prom-stack-values-v${HELM_CHART_VERSION}.yaml"
     ```
+    **Note:**
+    `ระบุ` version ของ `Helm` chart ที่จะใช้ในที่นี้เราจะเลือก 30.0.1
+
+
 Now, check the Prometheus stack Helm release status:
 ```shell
 helm ls -n monitoring
