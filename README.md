@@ -146,8 +146,11 @@ kubectl apply -f assets/manifests/app-test.yaml
     kubectl --namespace monitoring port-forward svc/kube-prom-stack-grafana 3000:80
     ```
 
-2. เพิ่ม dashboard ที่ต้องการ
-![Grafana Ambassador Dashboard](assets/images/grafana-01.png)
+2. เลือก dashboard ในมุมมองที่ต้องการ monitor ในที่นี้เราจะเลือกดู​ pod มีการใช้งาน CPU,Memory เท่าไหร่
+![Grafana](assets/images/grafana-01.png)
+![Grafana](assets/images/grafana-02.png)
+3. เลือก namespace,pod ที่ต้องการ monitor
+![Grafana](assets/images/grafana-03.png)
 
 ## Step 4 - Configuring Persistent Storage for Prometheus
 ```shell
