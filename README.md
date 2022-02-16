@@ -100,7 +100,8 @@ Important Note:
 หลังจากที deploy   `Prometheus` และ `Grafana` ลง Kubernetes cluster เรียบร้อยแล้ว, Step นี้เราจะลองสร้าง deployment,service ชือ `example-app` เพื่อมาทดสอบว่าสามารถ monitor service ได้หรือไม่
 ```bash
 vi assets/manifests/app-test.yaml
-...
+```
+```bash
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -156,7 +157,7 @@ kubectl apply -f assets/manifests/app-test.yaml
 ![Grafana](assets/images/grafana-03.png)
 
 ## Step 4 - Configuring Persistent Storage for Prometheus   
-ถึง Step นี้ เราจะมา enable persistent storage สำหรับ Prometheus เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้
+ถึง Step นี้ เราจะมา enable persistent storage สำหรับ Prometheus เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้
 1. List Storage Class(SC) ที่ Storage admininstrator มีให้ใช้
 ```shell
 kubectl get storageclass
@@ -208,4 +209,4 @@ prometheus-kube-prom-stack-kube-prome-prometheus-db-prometheus-kube-prom-stack-k
 ```
 
 ## Step 5 - Configuring Persistent Storage for Grafana
-ถึง Step นี้ เราจะมา enable persistent storage สำหรับ Grafana เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้. ขั้นตอนจะเหมือนกับ [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus).
+ถึง Step นี้ เราจะมา enable persistent storage สำหรับ Grafana เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้. ขั้นตอนจะเหมือนกับ [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus).
