@@ -149,7 +149,7 @@ kubectl apply -f assets/manifests/app-test.yaml
 2. เลือก dashboard ในมุมมองที่ต้องการ monitor ในที่นี้เราจะเลือกดู​ pod มีการใช้งาน CPU,Memory เท่าไหร่
 ![Grafana](assets/images/grafana-01.png)
 ![Grafana](assets/images/grafana-02.png)
-3. เลือก namespace,pod ที่ต้องการ monitor
+3. เลือก namespace,pod ที่ต้องการ monitor ในที่นี้เราจะเลือก application ที่เราสร้างจากจาก Step 2
 ![Grafana](assets/images/grafana-03.png)
 
 ## Step 4 - Configuring Persistent Storage for Prometheus
