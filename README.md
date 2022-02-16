@@ -1,4 +1,7 @@
 # How to Install the Prometheus Monitoring Stack
+## Table of contents
+- [Prerequisites](#prerequisites)
+- [Step 1 - Installing the Prometheus Stack](#step-1---installing-the-prometheus-stack)
 ## Prerequisites
 1. A [Git](https://git-scm.com/downloads) client, to clone the `Starter Kit` repository.
 2. [Helm](https://www.helms.sh), for managing `Promtheus` stack releases and upgrades.
@@ -10,7 +13,7 @@
     ```shell
     git clone https://github.com/kittisuw/kube-prometheus-stack.git
     ```
-2. เพิ่ม helm repository และ list chart ที่มีให้ใช้   
+2. เพิ่ม helm repository prometheus-community และ list chart ที่มีให้ใช้ 
     ```shell
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo update
