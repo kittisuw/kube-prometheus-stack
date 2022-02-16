@@ -161,7 +161,8 @@ kubectl apply -f assets/manifests/app-test.yaml
 1. List Storage Class(SC) ที่ Storage admininstrator มีให้ใช้
 ```shell
 kubectl get storageclass
-
+```
+```shell
 NAME                PROVISIONER                     RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
 csi-disk            everest-csi-provisioner         Delete          Immediate              true                   15d
 csi-disk-topology   everest-csi-provisioner         Delete          WaitForFirstConsumer   true                   15d
