@@ -147,6 +147,7 @@ kubectl apply -f assets/manifests/app-test.yaml
     ```
 
 2. เลือก dashboard ในมุมมองที่ต้องการ monitor ในที่นี้เราจะเลือกดู​ pod มีการใช้งาน CPU,Memory เท่าไหร่
+
 ![Grafana](assets/images/grafana-01.png)
    
 ![Grafana](assets/images/grafana-02.png)
