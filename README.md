@@ -12,6 +12,7 @@
 1. Clone project
     ```shell
     git clone https://github.com/kittisuw/kube-prometheus-stack.git
+    cd kube-prometheus-stack
     ```
 2. เพิ่ม helm repository prometheus-community และ list chart ที่มีให้ใช้ 
     ```shell
