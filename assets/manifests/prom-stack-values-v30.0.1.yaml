@@ -15,11 +15,12 @@ grafana:
   ##
   defaultDashboardsTimezone: utc
   adminPassword: prom-operator
-  # persistence:
-  #   enabled: true
-  #   storageClassName: do-block-storage
-  #   accessModes: ["ReadWriteOnce"]
-  #   size: 5Gi
+
+  persistence:
+    enabled: true
+    storageClassName: csi-disk
+    accessModes: ["ReadWriteOnce"]
+    size: 5Gi
 
 ## Manages Prometheus and Alertmanager components
 ##

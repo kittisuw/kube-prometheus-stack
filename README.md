@@ -212,3 +212,31 @@ prometheus-kube-prom-stack-kube-prome-prometheus-db-prometheus-kube-prom-stack-k
 
 ## Step 5 - Configuring Persistent Storage for Grafana
 ถึงขั้นตอนนี้เราจะมา enable persistent storage สำหรับ Grafana เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้. ขั้นตอนจะเหมือนกับ [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus).
+1. unbar config assets/manifests/prom-stack-values-v30.0.1.yaml ดังด้านล่างในที่นี้เราจะใช้ Storage Class(SC) ที่ชื่อว่า csi-disk
+```shell
+grafana:
+...
+  persistence:
+    enabled: true
+    storageClassName: csi-disk
+    accessModes: ["ReadWriteOnce"]
+    size: 5Gi
+```
+2. Update config โดยใช้ Helm:
+```shell
+HELM_CHART_VERSION="30.0.1"
+
+helm upgrade kube-prom-stack prometheus-community/kube-prometheus-stack --version "${HELM_CHART_VERSION}" \
+  --namespace monitoring \
+  -f "assets/manifests/prom-stack-values-v${HELM_CHART_VERSION}.yaml"
+```
+ตรวจสอบ Persisten Vulume Claim (PVC)
+```shell
+kubectl get pvc -n monitoring
+```
+ผลลัพธ์ที่ได้จะประมาณนี้ (STATUS column ควรจะเป็น Bound):
+```shell
+NAME                                                                                                     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+kube-prom-stack-grafana                                                                                  Bound    pvc-663f0471-321a-470e-9c1b-055354f49892   5Gi        RWO            csi-disk       2m12s
+prometheus-kube-prom-stack-kube-prome-prometheus-db-prometheus-kube-prom-stack-kube-prome-prometheus-0   Bound    pvc-20e7c8ac-c19b-4f39-b4b0-4728b7d8c652   5Gi        RWO            csi-disk       11h
+```
