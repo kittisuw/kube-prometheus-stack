@@ -1,7 +1,13 @@
 # How to Install the Prometheus Monitoring Stack
 ## Table of contents
-- [Prerequisites](#prerequisites)
-- [Step 1 - Installing the Prometheus Stack](#step-1---installing-the-prometheus-stack)
+- [How to Install the Prometheus Monitoring Stack](#how-to-install-the-prometheus-monitoring-stack)
+  - [Table of contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Step 1 - Installing the Prometheus Stack](#step-1---installing-the-prometheus-stack)
+  - [Step 2 - Running application for test](#step-2---running-application-for-test)
+  - [Step 3 - Visualizing Metrics Using Grafana](#step-3---visualizing-metrics-using-grafana)
+  - [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus)
+  - [Step 5 - Configuring Persistent Storage for Grafana](#step-5---configuring-persistent-storage-for-grafana)
 ## Prerequisites
 1. A [Git](https://git-scm.com/downloads) client, to clone the `Starter Kit` repository.
 2. [Helm](https://www.helms.sh), for managing `Promtheus` stack releases and upgrades.
@@ -157,7 +163,7 @@ kubectl apply -f assets/manifests/app-test.yaml
 ![Grafana](assets/images/grafana-03.png)
 
 ## Step 4 - Configuring Persistent Storage for Prometheus   
-ถึง Step นี้ เราจะมา enable persistent storage สำหรับ Prometheus เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้
+ถึงขั้นตอนนี้เราจะมา enable persistent storage สำหรับ Prometheus เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้
 1. List Storage Class(SC) ที่ Storage admininstrator มีให้ใช้
 ```shell
 kubectl get storageclass
@@ -209,4 +215,4 @@ prometheus-kube-prom-stack-kube-prome-prometheus-db-prometheus-kube-prom-stack-k
 ```
 
 ## Step 5 - Configuring Persistent Storage for Grafana
-ถึง Step นี้ เราจะมา enable persistent storage สำหรับ Grafana เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้. ขั้นตอนจะเหมือนกับ [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus).
+ถึงขั้นตอนนี้เราจะมา enable persistent storage สำหรับ Grafana เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้. ขั้นตอนจะเหมือนกับ [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus).
