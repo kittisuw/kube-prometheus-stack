@@ -240,3 +240,29 @@ NAME                                                                            
 kube-prom-stack-grafana                                                                                  Bound    pvc-663f0471-321a-470e-9c1b-055354f49892   5Gi        RWO            csi-disk       2m12s
 prometheus-kube-prom-stack-kube-prome-prometheus-db-prometheus-kube-prom-stack-kube-prome-prometheus-0   Bound    pvc-20e7c8ac-c19b-4f39-b4b0-4728b7d8c652   5Gi        RWO            csi-disk       11h
 ```
+##  Uninstallation
+1. Uninstall helm chart
+```shell
+helm ls -n monitoring                                                                 ok  cce-demo/monitoring kube  10:49:50 
+NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
+kube-prom-stack monitoring      4               2022-02-17 10:44:32.814173 +0700 +07    deployed        kube-prometheus-stack-30.0.1    0.53.1 
+```
+```shell
+helm uninstall kube-prom-stack -n monitoring
+```
+```shell
+release "kube-prom-stack" uninstalled
+```
+2. ลบ resource ที่อยู่ภายใต้ namespace monitoring และ ลบ namespace
+```shell
+kubectl delete all --all -n monitoring
+kubectl delete ns monitoring
+```
+ตรวจสอบ namespace monitoring ว่ายังหลงเหลืออยู่หรือไม่
+```shell
+kubectl get ns monitoring 
+```
+ผลลัพธ์ควรจะเป็นอย่างนี้
+```shell
+Error from server (NotFound): namespaces "monitoring" not found
+```
