@@ -2,7 +2,7 @@
 ## Table of contents
   - [Prerequisites](#prerequisites)
   - [Step 1 - Installing the Prometheus Stack](#step-1---installing-the-prometheus-stack)
-  - [Step 2 - Running application for test](#step-2---running-application-for-test)
+  - [Step 2 - Running application for Monitoring test](#step-2---running-application-for-monitoring-test)
   - [Step 3 - Visualizing Metrics Using Grafana](#step-3---visualizing-metrics-using-grafana)
   - [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus)
   - [Step 5 - Configuring Persistent Storage for Grafana](#step-5---configuring-persistent-storage-for-grafana)
@@ -98,7 +98,7 @@ kubectl --namespace monitoring port-forward svc/kube-prom-stack-grafana 3000:80
 ```
 Important Note:
 **ไม่ควร** expose Grafana ออก `public` network(ตัวอย่างเช่นใช้ ingress mapping หรือ Loadbalance service) ด้วย default login/password, คุณสามารถเลือก `Dashboard -> Manage` ในนั้นจะมี dashboard ต่างๆ ให้เลือก
-## Step 2 - Running application for test
+## Step 2 - Running application for Monitoring test
 หลังจากที deploy   `Prometheus` และ `Grafana` ลง Kubernetes cluster เรียบร้อยแล้ว, Step นี้เราจะลองสร้าง deployment,service ชือ `example-app` เพื่อมาทดสอบว่าสามารถ monitor service ได้หรือไม่
 ```bash
 vi assets/manifests/app-test.yaml
