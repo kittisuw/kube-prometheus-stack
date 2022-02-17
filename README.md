@@ -6,6 +6,7 @@
   - [Step 3 - Visualizing Metrics Using Grafana](#step-3---visualizing-metrics-using-grafana)
   - [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus)
   - [Step 5 - Configuring Persistent Storage for Grafana](#step-5---configuring-persistent-storage-for-grafana)
+  - [Uninstallation](#uninstallation)
 ## Prerequisites
 1. A [Git](https://git-scm.com/downloads) client, to clone the `kube-prometheus-stack` repository.
 2. [Helm](https://www.helms.sh), for managing `Promtheus` stack releases and upgrades.
@@ -159,7 +160,7 @@ kubectl apply -f assets/manifests/app-test.yaml
 ![Grafana](assets/images/grafana-03.png)
 
 ## Step 4 - Configuring Persistent Storage for Prometheus   
-ถึงขั้นตอนนี้เราจะมา enable persistent storage สำหรับ Prometheus เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้
+ถึงขั้นตอนนี้เราจะมา enable persistent storage สำหรับ Prometheus เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้ ตย. ด้านล่างเป็นของ Huawei cloud
 1. List Storage Class(SC) ที่ Storage admininstrator มีให้ใช้
 ```shell
 kubectl get storageclass
