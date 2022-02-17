@@ -13,14 +13,14 @@ grafana:
   ## Timezone for the default dashboards
   ## Other options are: browser or a specific timezone, i.e. Europe/Luxembourg
   ##
-  defaultDashboardsTimezone: utc
+  defaultDashboardsTimezone: Asia/Bangkok
   adminPassword: prom-operator
 
-  persistence:
-    enabled: true
-    storageClassName: csi-disk
-    accessModes: ["ReadWriteOnce"]
-    size: 5Gi
+#  persistence:
+#    enabled: true
+#    storageClassName: csi-disk
+#    accessModes: ["ReadWriteOnce"]
+#    size: 5Gi
 
 ## Manages Prometheus and Alertmanager components
 ##
@@ -32,15 +32,19 @@ prometheusOperator:
 prometheus:
   enabled: true
 
+  ## How long to retain metrics
+  ##
+  #retention: 15d    #default: 10d
+
 ## Prometheus StorageSpec for persistent data
 ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/storage.md
 ##
-  prometheusSpec:
-    storageSpec:
-      volumeClaimTemplate:
-        spec:
-          storageClassName: csi-disk
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 5Gi
+#  prometheusSpec:
+#    storageSpec:
+#      volumeClaimTemplate:
+#        spec:
+#          storageClassName: csi-disk
+#          accessModes: ["ReadWriteOnce"]
+#          resources:
+#            requests:
+#              storage: 5Gi
