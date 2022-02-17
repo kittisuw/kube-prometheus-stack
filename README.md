@@ -1,6 +1,5 @@
 # How to Install the Prometheus Monitoring Stack
 ## Table of contents
-- [How to Install the Prometheus Monitoring Stack](#how-to-install-the-prometheus-monitoring-stack)
   - [Table of contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
   - [Step 1 - Installing the Prometheus Stack](#step-1---installing-the-prometheus-stack)
