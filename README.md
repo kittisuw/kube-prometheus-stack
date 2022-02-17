@@ -17,7 +17,7 @@
     git clone https://github.com/kittisuw/kube-prometheus-stack.git
     cd kube-prometheus-stack
     ```
-2. เพิ่ม helm repository prometheus-community และ list chart ที่มีให้ใช้ 
+2. เพิ่ม helm repository prometheus-community และ list chart 
     ```shell
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo update
@@ -30,7 +30,7 @@
     prometheus-community/kube-prometheus-stack              32.2.1          0.54.0          kube-prometheus-stack collects Kubernetes manif...
     ...
     ```
-3. install kube-prometheus-stack โดยใช้ Helm:
+3. ติดตั้ง kube-prometheus-stack โดยใช้ Helm:
     ```shell
     HELM_CHART_VERSION="30.0.1"
 
@@ -243,17 +243,21 @@ prometheus-kube-prom-stack-kube-prome-prometheus-db-prometheus-kube-prom-stack-k
 ```
 ##  Uninstallation
 1. Uninstall helm chart
+List chart ที่ได้ทำการติดตั้ง ภายใต้ namespace monitoring
 ```shell
 helm ls -n monitoring                                                                 ok  cce-demo/monitoring kube  10:49:50 
 NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
 kube-prom-stack monitoring      4               2022-02-17 10:44:32.814173 +0700 +07    deployed        kube-prometheus-stack-30.0.1    0.53.1 
 ```
+ถอดถอน Chart ที่ได้ทำการติดตั้ง ภายใต้ namespace monitoring
 ```shell
 helm uninstall kube-prom-stack -n monitoring
 ```
+ผลลัพธ์ที่ได้จะประมาฯนี้:
 ```shell
 release "kube-prom-stack" uninstalled
 ```
+
 2. ลบ resource ที่อยู่ภายใต้ namespace monitoring และ ลบ namespace
 ```shell
 kubectl delete all --all -n monitoring
