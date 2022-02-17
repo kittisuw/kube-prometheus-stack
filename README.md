@@ -7,7 +7,7 @@
   - [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus)
   - [Step 5 - Configuring Persistent Storage for Grafana](#step-5---configuring-persistent-storage-for-grafana)
 ## Prerequisites
-1. A [Git](https://git-scm.com/downloads) client, to clone the `Starter Kit` repository.
+1. A [Git](https://git-scm.com/downloads) client, to clone the `kube-prometheus-stack` repository.
 2. [Helm](https://www.helms.sh), for managing `Promtheus` stack releases and upgrades.
 3. [Kubectl](https://kubernetes.io/docs/tasks/tools), for `Kubernetes` interaction.
 ## Step 1 - Installing the Prometheus Stack
