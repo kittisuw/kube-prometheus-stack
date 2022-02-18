@@ -4,8 +4,8 @@
   - [Step 1 - Installing the Prometheus Stack](#step-1---installing-the-prometheus-stack)
   - [Step 2 - Running application for Monitoring test](#step-2---running-application-for-monitoring-test)
   - [Step 3 - Visualizing Metrics Using Grafana](#step-3---visualizing-metrics-using-grafana)
-  - [Step 4 - Configuring Persistent Storage for Prometheus(recommended)](#step-4---configuring-persistent-storage-for-prometheus-\(recommended\))
-  - [Step 5 - Configuring Persistent Storage for Grafana(recommended)](#step-5---configuring-persistent-storage-for-grafana-recommended)
+  - [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus)
+  - [Step 5 - Configuring Persistent Storage for Grafana](#step-5---configuring-persistent-storage-for-grafana)
   - [Uninstallation](#uninstallation)
 ## Prerequisites
 1. A [Git](https://git-scm.com/downloads) client, to clone the `kube-prometheus-stack` repository.
