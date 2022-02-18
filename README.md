@@ -159,7 +159,7 @@ kubectl apply -f assets/manifests/app-test.yaml
    
 ![Grafana](assets/images/grafana-03.png)
 
-## Step 4 - Configuring Persistent Storage for Prometheus(recommended)
+## Step 4 - Configuring Persistent Storage for Prometheus
 ถึงขั้นตอนนี้เราจะมา enable persistent storage สำหรับ Prometheus เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้ ตย. ด้านล่างเป็นของ Huawei cloud
 1. List Storage Class(SC) ที่ Storage admininstrator มีให้ใช้
 ```shell
@@ -211,7 +211,7 @@ NAME                                                                            
 prometheus-kube-prom-stack-kube-prome-prometheus-db-prometheus-kube-prom-stack-kube-prome-prometheus-0   Bound    pvc-20e7c8ac-c19b-4f39-b4b0-4728b7d8c652   5Gi        RWO            csi-disk       13m
 ```
 
-## Step 5 - Configuring Persistent Storage for Grafana(recommended)
+## Step 5 - Configuring Persistent Storage for Grafana
 ถึงขั้นตอนนี้เราจะมา enable persistent storage สำหรับ Grafana เพื่อป้องกันข้อมูล metric หายเวลา `service restarts` หรือเกิดเหตุ `Cluster failures` ในที่นี้เราจะขอ Disk มาใช้(Persisten Vulume Claim (PVC)) 5 Gi โดยใช้วิธีระบุ Storage Class(SC) ที่มีให้ใช้. ขั้นตอนจะเหมือนกับ [Step 4 - Configuring Persistent Storage for Prometheus](#step-4---configuring-persistent-storage-for-prometheus).
 1. unbar config assets/manifests/prom-stack-values-v30.0.1.yaml ดังด้านล่างในที่นี้เราจะใช้ Storage Class(SC) ที่ชื่อว่า csi-disk
 ```shell
