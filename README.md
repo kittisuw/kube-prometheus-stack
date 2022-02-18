@@ -46,7 +46,7 @@
 ```shell
 helm ls -n monitoring
 ```
-ผลลัพท์จะประมาณนี้ (ข้อสังเกตุ colum STATUS ควรจะเป็น deployed):
+ผลลัพธ์จะประมาณนี้ (ข้อสังเกต colum STATUS ควรจะเป็น deployed):
 ```shell
 NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
 kube-prom-stack monitoring      1               2022-02-16 01:09:18.394845 +0700 +07    deployed        kube-prometheus-stack-30.0.1    0.53.1
@@ -100,7 +100,7 @@ kubectl --namespace monitoring port-forward svc/kube-prom-stack-grafana 3000:80
 Important Note:
 **ไม่ควร** expose Grafana ออก `public` network(ตัวอย่างเช่นใช้ ingress mapping หรือ Loadbalance service) ด้วย default login/password, คุณสามารถเลือก `Dashboard -> Manage` ในนั้นจะมี dashboard ต่างๆ ให้เลือก
 ## Step 2 - Running application for Monitoring test
-หลังจากที deploy   `Prometheus` และ `Grafana` ลง Kubernetes cluster เรียบร้อยแล้ว, Step นี้เราจะลองสร้าง deployment,service ชือ `example-app` เพื่อมาทดสอบว่าสามารถ monitor service ได้หรือไม่
+หลังจากที่ deploy   `Prometheus` และ `Grafana` ลง Kubernetes cluster เรียบร้อยแล้ว, Step นี้เราจะลองสร้าง deployment,service ชือ `example-app` เพื่อมาทดสอบว่าสามารถ monitor service ได้หรือไม่
 ```bash
 vi assets/manifests/app-test.yaml
 ```
